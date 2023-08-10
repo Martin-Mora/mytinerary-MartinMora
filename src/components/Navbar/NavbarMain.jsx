@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../Navbar/navbarMain.css';
-import User from '../../img/user.png';
+import User from '../../img/User.png';
 import { Link } from 'react-router-dom';
 
 
