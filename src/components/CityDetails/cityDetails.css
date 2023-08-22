@@ -1,0 +1,80 @@
+
+
+.containerCity__info{
+  position: relative;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.containerCity__info img{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  
+}
+
+.containerCity__infoCity{
+  text-align: center;
+}
+
+.containerCity__btnCity{
+  width: 30%;
+  margin: auto;
+  padding: 10px;
+  background-color: #FAF0E6;
+  color: black;
+  border-radius: 10px;
+  
+}
+
+
+
+.containerCity__btnCity:hover{
+  background-color: #faf0e6c7;
+}
+
+.containerCity__general{
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: .8em;
+  color: white;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerCity__general a{
+  text-align: center;
+  width: 100%;
+}
+
+.itineraries{
+  background-image: url('../../img/construction.svg');
+  height: 100vh;
+  background-size: 100% 100%;
+}
+
+@media (min-width:1024px) {
+  .containerCity__btnCity{
+    width: 20%;
+  }
+  .containerCity__general{
+    font-size: 1em;
+    width: 70%;
+  }
+}
+
+@media (min-width:1024px){
+}
+

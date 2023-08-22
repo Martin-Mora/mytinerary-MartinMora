@@ -48,8 +48,8 @@ const NavbarMain = () => {
                   <i className={` ${menuOpen ? ' bx bx-x' : 'none'}`}  ></i>
                 </div>
               </li>
-              <li><Link to="/" onClick={`${handleModal}?''`}><i className='bx bxs-home'></i> Home</Link></li>
-              <li><Link to="/cities" onClick={`${handleModal}?''`}><i className='bx bxs-briefcase-alt' ></i> Cities</Link></li>
+              <li onClick={handleClick}><Link to="/" ><i className='bx bxs-home'></i> Home</Link></li>
+              <li onClick={handleClick}><Link to="/cities" ><i className='bx bxs-briefcase-alt' ></i> Cities</Link></li>
               <li className='app-login'><img className='user-icon' src={User} alt='' /><a href="#"> Login</a></li>
             </ul>
 

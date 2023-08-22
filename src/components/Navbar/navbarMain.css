@@ -1,15 +1,18 @@
+
 .app-main__header{
   background-color: #333; 
   height: 10vh;
   color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   position: sticky;
   left: 0;
   right: 0;
   top: 0;
-  z-index: 2;
+  z-index: 12;
+  padding:0 100px;
+  
 }
 
 .bx-x{
@@ -22,6 +25,7 @@
 
 .app-main__header--logo{
   font-size: 1.5em;
+  width: 40%;
 
 }
 
@@ -47,17 +51,21 @@
   list-style: none;
   align-items: center;
   margin-bottom: 0;
+  margin-left: 10em;
+  
 }
 
 .app-main__header--nav ul li{
   margin: 0 1.5em;
   cursor: pointer;
+  
 }
 
 .app-main__header--nav ul li a{
   text-decoration: none;
   color: white;
   position: relative;
+  
 }
 
 .app-main__header--nav ul li a::before,.app-main__header--nav ul li a::after{
@@ -66,6 +74,7 @@
   position: absolute;
   opacity: 0;
   transition: .2s;
+  
 }
 
 .app-main__header--nav ul li a::before{
@@ -100,25 +109,29 @@
   color: white;
 }
 
-.modalBackground{
-  background-color: hsla(0deg, 0%, 0%, 0.5);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 10;
-  
-}
 
-.modalBackgroundNone{
-  display: none;
-}
 
 @media (max-width:768px) {
 
+  .app-main__header{
+    padding: 0;
+  }
+
+  .modalBackgroundNone{
+    display: none;
+  }
+  .modalBackground{
+    background-color: hsla(0deg, 0%, 0%, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    z-index: 10;
+    
+  }
+  
 
   .app-main__header--logo{
     justify-content: flex-start;
