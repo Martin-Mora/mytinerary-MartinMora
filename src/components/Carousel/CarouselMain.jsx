@@ -40,7 +40,7 @@ const CarouselMain = () => {
         <button onClick={btnPrev} className="btn-prev">{"<"}</button>
       <div className='carouselContainer'>
         {
-          Image[pageCity].map((travel,key) => <TravelCard key={key} travel={travel}/>)
+          Image[pageCity].map((travel,key) => <TravelCard key={key} travel={travel} style='Img-container' buttonShow='btn-hidden' />)
         }
         
         <button onClick={btnNext} className="btn-next">{">"}</button>
