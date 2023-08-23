@@ -12,7 +12,7 @@ const Cities = () => {
 
 
   useEffect(() => {
-    axios('http://localhost:3000/api/cities')
+    axios('https://mytinerary-back-martinmora-1c1h-dev.fl0.io/api/cities')
     .then(res=>setData(res.data.response))
 
     
