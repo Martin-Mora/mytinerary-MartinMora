@@ -87,11 +87,23 @@
   margin-top: 1em;
 }
 
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 2em 0;
+}
+
+
 @media (min-width:768px) {
   .citiesContainer{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+    display: flex;
+    flex-wrap: wrap;
   }
+
+
 
   .welcomeCities__search{
     width: 60%;
@@ -114,12 +126,8 @@
 }
 
 @media (min-width:1440px) {
-  .citiesContainer{
-    grid-template-columns: repeat(3,1fr);
-  }
-
   .Img-container2{
-    width: 70%;
+    width: 30%;
   }
 
   .notFoundCity{

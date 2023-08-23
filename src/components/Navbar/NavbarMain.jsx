@@ -9,7 +9,6 @@ const NavbarMain = () => {
   const[menuOpen,setMenuOpen] = useState(false);
   const[modalClose,setModalClose] = useState(true);
   
- 
 
 
   const handleClick= ()=> {
@@ -25,7 +24,6 @@ const NavbarMain = () => {
     
   }
 
- 
 
   return (
     <>
