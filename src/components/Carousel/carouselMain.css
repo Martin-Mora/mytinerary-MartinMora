@@ -30,8 +30,6 @@
     height: 250px;
     position: relative;
     color: white;
-    cursor: pointer;
-
 }
 
 .carousel-img--info{
@@ -42,8 +40,9 @@
     background-color: rgba(0, 0, 0, 0.5); 
     color: white;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: baseline;
+    padding: 0 1em;
 }
 
 

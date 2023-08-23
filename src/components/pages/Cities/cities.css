@@ -69,23 +69,6 @@
   
 }
 
-/* .notFoundCity-container{
-  
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.notFoundCity{
-  width: 70%;
-  margin: 3em;
-}
-
-.notFoundCity-container--title{
-  margin-top: 1em;
-} */
 
 .spinner-container {
   display: flex;
@@ -108,10 +91,6 @@
   .welcomeCities__search{
     width: 60%;
   }
-
-  /* .notFoundCity{
-    width: 30%;
-  } */
 }
 
 
@@ -129,8 +108,4 @@
   .Img-container2{
     width: 30%;
   }
-
-  /* .notFoundCity{
-    margin: auto;
-  } */
 }
