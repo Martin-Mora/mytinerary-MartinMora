@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <div className='adress'>
-         <h5>742 Evergreen Terrace</h5>
+        <h5>742 Evergreen Terrace</h5>
       <h5 className='location'><i className='bx bx-current-location' ></i> Location</h5>
       </div>
 
