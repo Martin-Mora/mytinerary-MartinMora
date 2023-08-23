@@ -1,9 +1,11 @@
 import '../Cities/cities.css';
 import TravelCard from '../../TravelCard/TravelCard';
 import { useState, useEffect } from 'react';
-import notFound from '../../../img/notFound.svg';
+// import notFound from '../../../img/notFound.svg';
 import axios from 'axios';
 import { TailSpin} from 'react-loader-spinner';
+import { Notfound } from '../../Notfound/Notfound';
+
 
 const Cities = () => {
   const [data, setData] = useState([]);
@@ -51,10 +53,7 @@ const Cities = () => {
     render = result.length > 0 ? result.map((travel) => (
       <TravelCard key={travel._id} travel={travel} style='Img-container2' buttonShow='btn-info' />
     )) : (
-      <div className='notFoundCity-container'>
-        <h2 className='notFoundCity-container--title'>Result not found</h2>
-        <img src={notFound} className='notFoundCity' alt="Not found" />
-      </div>
+    <Notfound />
     );
   } else {
     render = data.map((travel) => (

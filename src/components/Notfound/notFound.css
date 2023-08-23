@@ -1,0 +1,29 @@
+.notFoundCity-container{
+  
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notFoundCity{
+  width: 70%;
+  margin: 3em;
+}
+
+.notFoundCity-container--title{
+  margin-top: 1em;
+}
+
+@media (min-width:768px) {
+  .notFoundCity{
+    width: 30%;
+  }
+}
+
+@media (min-width:1440px) {
+  .notFoundCity{
+    margin: auto;
+  }
+}
