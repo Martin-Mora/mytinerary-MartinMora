@@ -12,7 +12,7 @@ const CityDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/cities/' + id);
+        const response = await fetch('https://mytinerary-back-martinmora-1c1h-dev.fl0.io/api/cities/' + id);
         const jsonData = await response.json();
         setData(jsonData.response); 
       } catch (error) {
