@@ -1,6 +1,6 @@
 import ActivitiesItem from "../ActivitiesItem/ActivitiesItem"
 import '../Activities/activities.css'
-import ActivitiesConstruction from '../../img/ActivitiesConstruction.svg'
+import ActivitiesConstruction from '../../img/activitiesConstruction.svg'
 
 const Activities = () => {
   const items = [
