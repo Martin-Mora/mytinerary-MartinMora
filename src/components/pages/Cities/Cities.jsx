@@ -1,83 +1,86 @@
-import '../Cities/cities.css';
-import TravelCard from '../../TravelCard/TravelCard';
-import { useState, useEffect } from 'react';
-// import notFound from '../../../img/notFound.svg';
-import axios from 'axios';
-import { TailSpin} from 'react-loader-spinner';
-import { Notfound } from '../../Notfound/Notfound';
-
+import "../Cities/cities.css";
+import TravelCard from "../../TravelCard/TravelCard";
+import SpinnerLoading from "../../SpinnerLoading/SpinnerLoading";
+import { useEffect } from "react";
+import { Notfound } from "../../Notfound/Notfound";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  city_render,
+  city_input,
+  resetSearch,
+} from "../../../redux/actions/cityAction.js";
 
 const Cities = () => {
-  const [data, setData] = useState([]);
-  const [input, setinput] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const cityStore = useSelector((store) => store.cityReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios('https://mytinerary-back-martinmora-1c1h-dev.fl0.io/api/cities')
-      .then(res => {
-        setData(res.data.response);
-        setIsLoading(false); 
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
-        setIsLoading(false); 
-      });
-  }, []);
+    dispatch(city_render());
+    dispatch(resetSearch());
+  }, [dispatch]);
 
-  const searchInput = (e) => {
-    setinput(e.target.value);
-  }
+  const handleInput = (e) => {
+    dispatch(city_input(cityStore.selectedValue, e.target.value));
+  };
 
-  let result = data.filter((dato) => dato.city.toLowerCase().startsWith(input.toLowerCase().trim()));
+  // Filtro
+  const filteredCities = cityStore.allCity.filter((dato) => {
+    const city = dato.city || ""; 
+    return city
+      .toLowerCase()
+      .startsWith((cityStore.input || "").toLowerCase().trim());
+  });
 
   let render;
 
-  if (isLoading) {
-    render = (
-      <div className="spinner-container">
-        <TailSpin
-          height="80"
-          width="80"
-          color="#4fa94d"
-          ariaLabel="tail-spin-loading"
-          radius="1"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
-      <h2>Loading...</h2>
-      </div>
-    );
+  console.log(cityStore.selectedValue);
 
-  } else if (input) {
-    render = result.length > 0 ? result.map((travel) => (
-      <TravelCard key={travel._id} travel={travel} style='Img-container2' buttonShow='btn-info' />
-    )) : (
-    <Notfound />
-    );
+  if (cityStore.loading) {
+    render = <SpinnerLoading />
   } else {
-    render = data.map((travel) => (
-      <TravelCard key={travel._id} travel={travel} style='Img-container2' buttonShow='btn-info' />
-    ));
+    // filtro de ciudad
+    render =
+      filteredCities.length > 0 ? (
+        filteredCities.map((travel) => (
+          <TravelCard
+            key={travel._id}
+            travel={travel}
+            style="Img-container2"
+            buttonShow="btn-info"
+          />
+        ))
+      ) : (
+        <Notfound />
+      );
   }
 
   return (
     <>
-      <div className='bannerCities'>
-        <div className='welcomeCities'>
-          <h1 className='welcomeCities__title'>Look at the cities and find the best one for you</h1>
-          <div className='welcomeCities__search'>
-            <input onChange={searchInput} value={input} className='welcomeCities__search--input' type="text" placeholder='search your city....' />
+      {cityStore.loading ? (
+        render
+      ) : (
+        <div className="bannerCities">
+          <div className="welcomeCities">
+            <h1 className="welcomeCities__title">
+              Look at the cities and find the best one for you
+            </h1>
+            <div className="welcomeCities__search">
+              <input
+                onChange={handleInput}
+                value={cityStore.input}
+                className="welcomeCities__search--input"
+                type="text"
+                placeholder="search your city...."
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <main>
-        <div className='citiesContainer'>
-          {render}
-        </div>
+        <div className="citiesContainer">{render}</div>
       </main>
     </>
-  )
-}
+  );
+};
 
 export default Cities;

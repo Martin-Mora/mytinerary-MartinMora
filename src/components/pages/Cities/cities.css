@@ -86,7 +86,9 @@
     flex-wrap: wrap;
   }
 
-
+  .Img-container2{
+    width: 40%;
+  }
 
   .welcomeCities__search{
     width: 60%;

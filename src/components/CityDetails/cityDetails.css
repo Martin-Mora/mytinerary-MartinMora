@@ -1,8 +1,7 @@
-
-
 .containerCity__info{
   position: relative;
 }
+
 
 .overlay{
   position: absolute;
@@ -12,6 +11,8 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+
 
 .containerCity__info img{
   width: 100%;
@@ -34,10 +35,22 @@
   border-radius: 10px;
 }
 
-
+.containerCity__btnBack{
+  width: 30%;
+  text-decoration: none;
+  background-color: rgb(91, 82, 247);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 5em;
+}
 
 .containerCity__btnCity:hover{
   background-color: #faf0e6c7;
+}
+
+.containerCity__btnBack:hover{
+  background-color: rgba(90, 82, 247, 0.7);
 }
 
 .containerCity__general{
@@ -57,23 +70,33 @@
   width: 100%;
 }
 
-.itineraries{
-  background-image: url('../../img/construction.svg');
-  height: 100vh;
-  background-size: 100% 100%;
+.tinerary-title{
+  text-align: center;
+  margin-top: 2em;
+  font-size: 2.5em;
 }
 
 
+.containerTinerary{
+  width: 95%;
+  margin:2em auto;
+  border-radius: 10px;
+  padding: .5em;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  background-color: rgb(237, 240, 240);
+}
+
 @media (min-width:1024px) {
-  .containerCity__btnCity{
+  .containerCity__btnCity,.containerCity__btnBack{
     width: 20%;
   }
   .containerCity__general{
     font-size: 1em;
     width: 70%;
   }
-}
 
-@media (min-width:1024px){
+  .containerTinerary{
+    width: 70%;
+  }
 }
 

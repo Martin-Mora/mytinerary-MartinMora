@@ -15,13 +15,7 @@
   
 }
 
-.bx-x{
-  display: none;
-}
 
-.bx-menu{
-  display: none;
-}
 
 .app-main__header--logo{
   font-size: 1.5em;
@@ -52,13 +46,10 @@
   align-items: center;
   margin-bottom: 0;
   margin-left: 10em;
-  
 }
 
 .app-main__header--nav ul li{
   margin: 0 1.5em;
-  cursor: pointer;
-  
 }
 
 .app-main__header--nav ul li a{
@@ -68,7 +59,140 @@
   
 }
 
-.app-main__header--nav ul li a::before,.app-main__header--nav ul li a::after{
+
+
+.app-login{
+  background-color: rgb(79, 70, 229);
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.app-login a {
+  color: white;
+}
+
+  .bx-menu{
+    display: block;
+    position: relative;
+    font-size: 2em;
+    padding-right: .5em;
+  }
+
+    .app-main__header--nav .nav-items{
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 11;
+  }
+
+    .app-main__header--nav ul li{
+    margin-top: 3em;
+
+  }
+
+   .app-main__header--logo{
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+    .app-main__header--nav .none{
+    display: none;
+  }
+
+  
+  .modalBackground{
+    background-color: hsla(0deg, 0%, 0%, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    z-index: 10;
+    
+  }
+  
+  .modalBackgroundNone{
+  display: none;
+}
+   .app-main__header{
+    padding: 0;
+  }
+
+    .bx-x{
+    display: block;
+    font-size: 2em;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+  
+ 
+
+ 
+
+@media (min-width:768px) {
+
+  /* .app-main__header--nav .nav-items{
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 11;
+  } */
+
+  .app-main__header--nav .nav-items{
+
+    flex-direction: row;
+    position: sticky;
+    height: auto;
+  }
+
+  
+
+
+
+  .app-main__header{
+    justify-content: center;
+    padding: 0 10em;
+  }
+
+  
+  .app-main__header--nav{
+    display: flex;
+  }
+  
+  .app-main__header--nav ul li{
+    margin-top: 1em;
+    display: flex;
+  }
+
+  .app-main__header--nav ul li a{
+    display: flex;
+    align-items: center;
+    
+    gap: 0.5em;
+  }
+
+  .app-main__header--nav .none{
+    display: flex;
+  }
+
+  .bx-x{
+  display: none;
+}
+
+.bx-menu{
+  display: none;
+}
+
+ .app-main__header--nav ul li a::before,.app-main__header--nav ul li a::after{
   content: '';
   border-bottom: 2px solid rgb(91, 82, 247);
   position: absolute;
@@ -99,79 +223,11 @@
   width: 40%;
 }
 
-.app-login{
-  background-color: rgb(79, 70, 229);
-  padding: 0.5em 1em;
-  border-radius: 10px;
+
+
+.modalBackground{
+  display: none;
 }
 
-.app-login a {
-  color: white;
-}
-
-
-
-@media (max-width:768px) {
-
-  .app-main__header{
-    padding: 0;
-  }
-
-  .modalBackgroundNone{
-    display: none;
-  }
-  .modalBackground{
-    background-color: hsla(0deg, 0%, 0%, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh;
-    z-index: 10;
-    
-  }
-  
-
-  .app-main__header--logo{
-    justify-content: flex-start;
-    width: 100%;
-  }
-
-  .bx-menu{
-    display: block;
-    position: relative;
-    font-size: 2em;
-    padding-right: .5em;
-  }
-
-  .bx-x{
-    display: block;
-    font-size: 2em;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-  }
-
-
-  .app-main__header--nav .nav-items{
-    flex-direction: column;
-    background-color: #333;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    z-index: 11;
-  }
-
-  .app-main__header--nav .none{
-    display: none;
-  }
-
-
-  .app-main__header--nav ul li{
-    margin-top: 3em;
-
-  }
 }
 

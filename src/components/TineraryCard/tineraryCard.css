@@ -1,0 +1,147 @@
+.tinerary-container{
+  text-align: center;
+  margin-top: 2em;
+}
+
+
+
+.tinerary-title2{
+  margin-top: 2em;
+}
+
+.tinerary-img{
+  width: 70%;
+  margin:2em auto;
+}
+
+.tinerary-img img{
+  width: 100%;
+  border-radius: 10px;
+}
+
+.Itinerary-hashtag,.Itinerary-duration,.Itinerary-price{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.price-icon{
+  display: flex;
+  ;
+}
+
+.price-icon i{
+  font-size: 1.5em;
+  margin: 0 1px;
+  color: greenyellow;
+  
+}
+
+
+
+.tinerary-like{
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.tinerary-like span{
+  font-weight: 700;
+  color:  rgb(91, 82, 247);
+  padding-right: .5em;
+}
+
+
+.tinerary-like i{
+  font-size: 150%;
+}
+
+
+
+.Itinerary-user{
+  width: 25%;
+  margin:1em auto;
+}
+
+.Itinerary-user img{
+  width: 80%;
+  border-radius: 50%;
+  margin:1em auto;
+}
+
+.Itinerary-user span{
+  font-weight: 700;
+}
+
+.Itinerary-info{
+  list-style: none;
+  padding: 10px 0;
+  background-color: slategray;
+  color: white;
+  border-radius: 20px;
+  margin: 2em auto;
+  width: 70%;
+}
+
+.Itinerary-info span{
+  font-weight: 700;
+  color: wheat;
+  margin:5px;
+  
+}
+
+@media (min-width:1024px) {
+  
+  .tinerary-img{
+    max-width: 40%;
+  }
+  
+  .Itinerary-user{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin: auto;
+    padding-bottom: 2em;
+    /* border: 1px solid red; */
+  }
+
+  .Itinerary-hashtag{
+  width: 70%;
+}
+
+  
+  .Itinerary-info{
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid red; */
+    align-items: center;
+    width: 600px;
+    height: 150px;
+  }
+
+  .Itinerary-info div{
+    margin: 0 1.5em;
+    /* height: 200px; */
+     /* border: 1px solid red; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .user-container{
+    display: flex;
+    /* border: 1px solid red; */
+    /* padding:0 15%; */
+    /* margin-right: 7%; */
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    
+  }
+ 
+}
+
+
+
