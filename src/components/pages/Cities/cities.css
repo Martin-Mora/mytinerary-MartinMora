@@ -1,3 +1,7 @@
+.cities{
+  height: 100%;
+}
+
 .bannerCities{
   background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../../img/BannerCities2.jpg');
   height: 70vh;

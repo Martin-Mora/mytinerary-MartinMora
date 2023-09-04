@@ -56,9 +56,6 @@ const Cities = () => {
 
   return (
     <>
-      {cityStore.loading ? (
-        render
-      ) : (
         <div className="bannerCities">
           <div className="welcomeCities">
             <h1 className="welcomeCities__title">
@@ -75,8 +72,8 @@ const Cities = () => {
             </div>
           </div>
         </div>
-      )}
-      <main>
+      
+      <main className="cities">
         <div className="citiesContainer">{render}</div>
       </main>
     </>

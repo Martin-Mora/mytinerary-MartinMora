@@ -41,6 +41,7 @@ const cityReducer = createReducer(initialState, (builder) =>
       return {
         ...store,
         tineraries: action.payload,
+        loading: false,
       };
     })
 

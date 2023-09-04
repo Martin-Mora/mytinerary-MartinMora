@@ -5,7 +5,8 @@ const citiesQueries = axios.create( {
 } );
 
 const tineraryQueries= axios.create({
-  baseURL: 'http://localhost:3000/api/tineraries'
+  // baseURL: 'http://localhost:3000/api/tineraries'
+  baseURL: 'https://mytinerary-back-martinmora-1c1h-dev.fl0.io/api/tineraries'
 });
 
 

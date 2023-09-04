@@ -21,6 +21,7 @@ const CityDetails = () => {
   let render;
   let renderTinerary = [];
   let showTinerary;
+  let isLoading = true;
 
   useEffect(() => {
     dispatch(city_render());
@@ -52,8 +53,10 @@ const CityDetails = () => {
     </>
   );
 
-  if (renderTinerary) {
-    const matchingItineraries = renderTinerary.filter(
+  
+  let matchingItineraries=[]
+   
+     matchingItineraries = renderTinerary.filter(
       (tinerary) =>
         cityStore && cityStore._id && tinerary.city === cityStore._id
     );
@@ -65,10 +68,9 @@ const CityDetails = () => {
           <Activities />
         </div>
       ));
+      isLoading = false;
     }
-  } else {
-    showTinerary = <UnderConstruction />;
-  }
+    
 
   return (
     <>
@@ -90,7 +92,7 @@ const CityDetails = () => {
 
           <section className="itineraries" id="itineraries">
             <h2 className="tinerary-title">Itineraries</h2>
-            {showTinerary}
+            {isLoading ? <UnderConstruction />: showTinerary}
           </section>
         </main>
       ) : (
