@@ -1,0 +1,45 @@
+.ActivitiesItem {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border: none;
+}
+
+.ActivitiesItem-header {
+  background-color: wheat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  width: 40%;
+  margin: auto;
+  border-radius:10px ;
+  transition: background-color 0.3s;
+}
+
+.Activities-title{
+  text-align: center;
+}
+
+.ActivitiesItem-content-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease-in-out;
+}
+
+.ActivitiesItem.open .ActivitiesItem-content-container {
+  max-height: 100%; 
+}
+
+.ActivitiesItem-content {
+  padding: 10px;
+}
+
+@media (min-width:1024px) {
+  .ActivitiesItem-header{
+    width: 20%;
+  }
+}
