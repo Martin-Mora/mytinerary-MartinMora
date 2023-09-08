@@ -6,6 +6,8 @@ import Cities from "./components/pages/Cities/Cities";
 import LayoutMain from "./components/pages/layouts/LayoutMain";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CityDetails from "./components/CityDetails/CityDetails";
+import Login from "./components/pages/Login/Login";
+import SignUp from "./components/pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: "/cityDetails/:id",
         element: <CityDetails />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp />,
       },
       {
         path: "*",

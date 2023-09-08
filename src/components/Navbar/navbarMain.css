@@ -62,14 +62,15 @@
 
 
 .app-login{
-  background-color: rgb(79, 70, 229);
-  padding: 0.5em 1em;
-  border-radius: 10px;
+ 
   cursor: pointer;
 }
 
 .app-login a {
+  background-color: rgb(79, 70, 229);
   color: white;
+  padding: 20px;
+  border-radius: 10px;
 }
 
   .bx-menu{
@@ -137,15 +138,9 @@
 
 @media (min-width:768px) {
 
-  /* .app-main__header--nav .nav-items{
-    flex-direction: column;
-    background-color: #333;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    z-index: 11;
-  } */
+  .app-login a{
+    padding: 6px;
+  }
 
   .app-main__header--nav .nav-items{
 
