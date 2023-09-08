@@ -45,10 +45,13 @@ const NavbarMain = () => {
               <i className="bx bxs-briefcase-alt"></i> Cities
             </Link>
           </li>
-          <li className="app-login">
-            <img className="user-icon" src={User} alt="" />
-            <a href="#"> Login</a>
-          </li>
+
+            <li className="app-login">
+              <Link to={`/Login/`}>
+                <img className="user-icon" src={User} alt="" />
+                Login
+              </Link>
+            </li>
         </ul>
       </nav>
 
