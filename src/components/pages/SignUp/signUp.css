@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid red; */
   width: 100%;
 }
 
@@ -14,8 +13,37 @@
   width: 50%;
 }
 
+.error-message-block{
+  display: block;
+  color: red;
+}
+
+.error-message-hidden{
+  display: none;
+}
+
+.validate-input{
+  display: flex;
+}
+
+.fieldRequiered{
+  color: red;
+  font-size: 1.3em;
+}
+
 select{
   border: none;
+}
+
+.btn-google{
+  padding-top: 3em;
+  display: flex;
+  justify-content: center;
+}
+
+.container-login100-form-btn{
+  display: flex;
+  flex-direction: column;
 }
 
 

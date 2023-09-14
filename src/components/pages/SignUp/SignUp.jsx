@@ -1,29 +1,136 @@
 import "../SignUp/signUp.css";
 import "../Login/login.css";
 import logoSignUp from "../../../img/logoLogin.svg";
-import { Link } from "react-router-dom";
-import country from "../../../data/dataCountry.json";
-import { GoogleLogin, GoogleOAuthProvider,useGoogleLogin } from "@react-oauth/google";
+import { Link, useNavigate } from "react-router-dom";
+import countries from "../../../data/dataCountry.json";
+import { GoogleLogin } from "@react-oauth/google";
+// import jwtDecode from "jwt-decode";
+import { useRef, useState } from "react";
+import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { signUp } from "../../../redux/actions/userAction.js";
 import jwtDecode from "jwt-decode";
 
-
 const SignUp = () => {
-  let paises = country.map((pais) => (
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const nameUser = useRef(null);
+  const avatar = useRef(null);
+  const country = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+  let hasError = false;
+
+  const SignUpCorrect = () => {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Thank you for register!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
+  };
+
+  const errorEmpty = () => {
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    if (nameUser.current.value === "") {
+      setNameError("Name is required");
+
+      hasError = true;
+    } else if (nameUser.current.value.length < 3) {
+      setNameError("Name must be at least 3 characters long");
+      hasError = true;
+    } else {
+      setNameError("");
+    }
+
+    if (!emailRegex.test(email.current.value)) {
+      // Utiliza test() para verificar el correo electrónico
+      setEmailError("Enter valid email (ex: pepito@email.com)");
+      hasError = true;
+    } else {
+      setEmailError("");
+    }
+
+    if (password.current.value === "") {
+      setPasswordError("Password is required");
+      hasError = true;
+    } else if (password.current.value.length < 6) {
+      setPasswordError("Password must be at least 6 characters long");
+      hasError = true;
+    } else if (
+      !/[A-Z]/.test(password.current.value) ||
+      !/[a-z]/.test(password.current.value) ||
+      !/[^A-Za-z0-9]/.test(password.current.value)
+    ) {
+      setPasswordError(
+        "Password must include at least one uppercase letter, one lowercase letter, and one symbol"
+      );
+      hasError = true;
+    } else {
+      setPasswordError("");
+    }
+
+    return hasError;
+  };
+
+  const handlePrevent = (e) => {
+    e.preventDefault();
+
+    const hasError = errorEmpty();
+
+    if (!hasError) {
+      const registerDataBody = {
+        nameUser: nameUser.current.value,
+        email: email.current.value,
+        avatar: avatar.current.value,
+        password: password.current.value,
+        country: country.current.value,
+      };
+
+      if (avatar.current.value.trim() !== "") {
+        registerDataBody.avatar = avatar.current.value;
+      }
+
+      dispatch(signUp(registerDataBody));
+
+      SignUpCorrect();
+    }
+  };
+
+  const signUpGoogle = (credentialResponse) => {
+    const userData = jwtDecode(credentialResponse.credential);
+    const DataGoogleBody = {
+      nameUser: userData.name,
+      email: userData.email,
+      avatar: userData.picture,
+      password: userData.given_name + userData.sub,
+    };
+    dispatch(signUp(DataGoogleBody));
+  };
+
+  let paises = countries.map((pais) => (
     <option key={pais.numericCode} value={pais.name}>
       {pais.name}
     </option>
   ));
-  
-  // let flag = country.filter((pais)=>console.log(pais.flag))
-  // let code = country.filter((pais)=>console.log(pais.numericCode))
- 
-
 
   paises.unshift(
-    <option  disabled key="default" value="">
+    <option disabled key="default" value="">
       Select your country
     </option>
-  ); 
+  );
 
   return (
     <div className="limiter">
@@ -45,22 +152,19 @@ const SignUp = () => {
                 type="text"
                 name="name"
                 placeholder="name"
+                ref={nameUser}
+                onChange={errorEmpty}
               />
+              <span className="fieldRequiered">*</span>
               <span className="focus-input100"></span>
             </div>
-
-            <div
-              className="wrap-input100 validate-input"
-              data-validate="Valid email is required: ex@abc.xyz"
+            <p
+              className={`error-message ${
+                nameError ? "error-message-block" : "error-message-hidden"
+              }`}
             >
-              <input
-                className="input100"
-                type="text"
-                name="lastName"
-                placeholder="last name"
-              />
-              <span className="focus-input100"></span>
-            </div>
+              {nameError}
+            </p>
 
             <div
               className="wrap-input100 validate-input"
@@ -71,6 +175,7 @@ const SignUp = () => {
                 type="text"
                 name="avatar"
                 placeholder="photo url"
+                ref={avatar}
               />
               <span className="focus-input100"></span>
               <span className="symbol-input100">
@@ -82,7 +187,12 @@ const SignUp = () => {
               className="wrap-input100 validate-input"
               data-validate="Valid email is required: ex@abc.xyz"
             >
-              <select className="input100 countrySelect" name="pais" defaultValue="">
+              <select
+                className="input100 countrySelect"
+                name="pais"
+                defaultValue=""
+                ref={country}
+              >
                 {paises}
               </select>
 
@@ -101,12 +211,22 @@ const SignUp = () => {
                 type="text"
                 name="email"
                 placeholder="Email"
+                ref={email}
+                onChange={errorEmpty}
               />
+              <span className="fieldRequiered">*</span>
               <span className="focus-input100"></span>
               <span className="symbol-input100">
                 <i className="fa fa-envelope" aria-hidden="true"></i>
               </span>
             </div>
+            <p
+              className={`error-message ${
+                emailError ? "error-message-block" : "error-message-hidden"
+              }`}
+            >
+              {emailError}
+            </p>
 
             <div
               className="wrap-input100 validate-input"
@@ -117,40 +237,42 @@ const SignUp = () => {
                 type="password"
                 name="pass"
                 placeholder="Password"
+                ref={password}
+                onChange={errorEmpty}
               />
+              <span className="fieldRequiered">*</span>
               <span className="focus-input100"></span>
               <span className="symbol-input100">
                 <i className="fa fa-lock" aria-hidden="true"></i>
               </span>
             </div>
+            <p
+              className={`error-message ${
+                passwordError ? "error-message-block" : "error-message-hidden"
+              }`}
+            >
+              {`Password is required (at least one uppercase, lowercase and symbol)`}
+            </p>
 
             <div className="container-login100-form-btn">
-              <button type="submit" className="login100-form-btn">
+              <button
+                type="submit"
+                className="login100-form-btn"
+                onClick={handlePrevent}
+              >
                 Sign Up
               </button>
             </div>
 
-            <div className="text-center p-t-12">
-              {/* <span className="txt1">
-							Forgot
-						</span>
-						<a className="txt2" href="#">
-							Username / Password?
-						</a> */}
-            </div>
-
-            <GoogleOAuthProvider clientId="186116319104-f0cm7g0hc8srne3j2dr0ttvt7152hvr6.apps.googleusercontent.com">
-              <GoogleLogin 
-                onSuccess={tokenResponse => {
-                  // console.log(credentialResponse);
-                  const inofUser = jwtDecode(tokenResponse.access_token)
-                  console.log(inofUser);
-                }}
+            <div className="btn-google">
+              <GoogleLogin
+                text="signup_with"
+                onSuccess={signUpGoogle}
                 onError={() => {
-                  console.log('Login Failed');
+                  console.log("Login Failed");
                 }}
               />
-            </GoogleOAuthProvider>
+            </div>
 
             <div className="text-center p-t-136">
               <Link to={`/login`} className="txt2">

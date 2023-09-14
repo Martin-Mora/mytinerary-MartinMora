@@ -8,6 +8,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CityDetails from "./components/CityDetails/CityDetails";
 import Login from "./components/pages/Login/Login";
 import SignUp from "./components/pages/SignUp/SignUp";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { signInToken } from "./redux/actions/userAction";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,14 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(signInToken());
+    }
+  }, []);
+
   return (
     <>
       <RouterProvider router={router} />

@@ -25,7 +25,7 @@ const cityReducer = createReducer(initialState, (builder) =>
       return {
         ...store,
         allCity: action.payload,
-        filterCity: action.payload,
+        filterCity: action.payload, 
         loading: false,
       };
     })

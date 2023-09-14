@@ -43,3 +43,5 @@ export const get_tineraries = createAsyncThunk("get_tinearies", async () => {
   const tineraries = getTinerary();
   return tineraries;
 });
+
+
