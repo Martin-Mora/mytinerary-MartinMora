@@ -33,7 +33,6 @@ const Cities = () => {
 
   let render;
 
-  console.log(cityStore.selectedValue);
 
   if (cityStore.loading) {
     render = <SpinnerLoading />

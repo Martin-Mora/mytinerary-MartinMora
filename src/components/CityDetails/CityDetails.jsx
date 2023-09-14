@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   get_city,
   resetCity,
-  get_tineraries,
+  get_tineraries, 
   city_render,
 } from "../../redux/actions/cityAction.js";
 
@@ -28,7 +28,7 @@ const CityDetails = () => {
     dispatch(get_city(id));
     dispatch(get_tineraries());
     return () => dispatch(resetCity());
-  }, [id, dispatch]);
+  }, [id, dispatch]); 
 
   const cityStore = useSelector((store) => store.cityReducer.city);
   const tinerariesStore = useSelector((store) => store.cityReducer.tineraries);
@@ -42,7 +42,6 @@ const CityDetails = () => {
     }
   }
 
-  console.log(renderTinerary);
 
   render = (
     <>

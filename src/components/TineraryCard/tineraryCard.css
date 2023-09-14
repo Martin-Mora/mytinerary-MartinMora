@@ -103,7 +103,6 @@
     width: 15%;
     margin: auto;
     padding-bottom: 2em;
-    /* border: 1px solid red; */
   }
 
   .Itinerary-hashtag{
@@ -114,7 +113,6 @@
   .Itinerary-info{
     display: flex;
     justify-content: center;
-    /* border: 1px solid red; */
     align-items: center;
     width: 600px;
     height: 150px;
@@ -122,18 +120,12 @@
 
   .Itinerary-info div{
     margin: 0 1.5em;
-    /* height: 200px; */
-     /* border: 1px solid red; */
     display: flex;
-    /* justify-content: center; */
     align-items: center;
   }
 
   .user-container{
     display: flex;
-    /* border: 1px solid red; */
-    /* padding:0 15%; */
-    /* margin-right: 7%; */
     width: 70%;
     margin: auto;
     justify-content: center;

@@ -2,10 +2,25 @@ import { useState } from "react";
 import "../Navbar/navbarMain.css";
 import User from "../../img/User.png";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../../redux/actions/userAction";
 
 const NavbarMain = () => {
+  const user = useSelector((store) => store.users.user);
+
+  const dispatch = useDispatch();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalClose, setModalClose] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
+
+  const toggleLogout = () => {
+    setShowLogout(!showLogout);
+  };
+
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
 
   const handleClick = () => {
     setMenuOpen(!menuOpen);
@@ -46,12 +61,40 @@ const NavbarMain = () => {
             </Link>
           </li>
 
-            <li className="app-login">
-              <Link to={`/Login/`}>
-                <img className="user-icon" src={User} alt="" />
-                Login
-              </Link>
-            </li>
+          {user ? (
+            <>
+              <div
+                className={`avatar-container ${
+                  showLogout ? "show-logout" : ""
+                }`}
+                onClick={toggleLogout}
+              >
+                {user.avatar ? (
+                  <img className="user-avatar" src={user.avatar} alt="Avatar" />
+                ) : (
+                  <img
+                    className="user-avatar"
+                    src="https://static.vecteezy.com/system/resources/previews/007/933/996/non_2x/ninja-logo-silhouette-of-japanese-fighter-vector.jpg"
+                    alt="Avatar"
+                  />
+                )}
+                {showLogout && (
+                  <div className="logout-button">
+                    <button onClick={handleLogout}>Log Out</button>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <li className="app-login" onClick={handleClick}>
+                <Link to={`/Login/`}>
+                  <img className="user-icon" src={User} alt="" />
+                  Login
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
 

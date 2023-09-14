@@ -2,7 +2,6 @@ import "../TineraryCard/tineraryCard.css";
 
 const TineraryCard = (tinerary) => {
 
-  //logica para aparecer los billetes
   let price = tinerary.value.price;
   let renderPrice = [];
 
