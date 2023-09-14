@@ -93,7 +93,7 @@ const SignUp = () => {
     if (!hasError) {
       const registerDataBody = {
         nameUser: nameUser.current.value,
-        email: email.current.value,
+        email: email.current.value.toLowerCase(),
         avatar: avatar.current.value,
         password: password.current.value,
         country: country.current.value,
