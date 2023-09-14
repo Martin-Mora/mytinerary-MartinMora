@@ -118,6 +118,7 @@ const SignUp = () => {
       password: userData.given_name + userData.sub,
     };
     dispatch(signUp(DataGoogleBody));
+    SignUpCorrect();
   };
 
   let paises = countries.map((pais) => (

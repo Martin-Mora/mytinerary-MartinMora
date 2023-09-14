@@ -87,6 +87,8 @@ const Login = () => {
       avatar: userData.picture,
     };
 
+    console.log(signInDataBody);
+
     dispatch(signIn(signInDataBody));
 
     navigate("/");
