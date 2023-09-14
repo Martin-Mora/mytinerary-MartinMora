@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
+
 const Home = () => {
   const user = useSelector((store) => store.users.user);
 
@@ -43,7 +44,7 @@ const Home = () => {
           <img src={welcome} alt="welcome-MyItenarary" />
         </div>
       </main>
-
+      
       <CarouselMain />
     </>
   );

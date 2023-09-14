@@ -42,7 +42,7 @@ export const logOut = createAction( "log_out", async () => {
 export const signInToken = createAsyncThunk( "token_login", async (  ) => {
   try {
       const token = localStorage.getItem( 'token' )
-      const response = await axios.post( 'https://mytinerary-back-martinmora-1c1h-dev.fl0.io/api/verification/singin/token',{}, {
+      const response = await axios.post( 'https://mytinerary-back-martinmora-1c1h-dev.fl0.io/api/verification/signin/token',{}, {
           headers: {
               Authorization : "Bearer " + token
             }
