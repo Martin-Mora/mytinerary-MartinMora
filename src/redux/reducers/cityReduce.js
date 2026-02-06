@@ -9,67 +9,57 @@ import {
 } from "../actions/cityAction.js";
 
 const initialState = {
-  allCity: [],
-  filterCity: [],
-  tineraries: [],
-  city: null,
-  tinerary: null,
-  loadingCity: true,        // loading para la ciudad
-  loadingTineraries: true,  // loading para itinerarios
+  allCity: [],       // Todas las ciudades
+  filterCity: [],    // Ciudades filtradas por búsqueda
+  tineraries: [],    // Lista de tinerarios
+  city: null,        // Ciudad seleccionada
+  tinerary: null,    // Tinerario seleccionado (si aplica)
+  loading: true,     // Loading general
   selectedValue: "",
   input: "",
 };
 
 const cityReducer = createReducer(initialState, (builder) =>
   builder
-    // ----- CARGAR TODAS LAS CIUDADES -----
-    .addCase(city_render.fulfilled, (state, action) => {
-      state.allCity = action.payload;
-      state.filterCity = action.payload;
-      // Podemos usar un loading general para esto si querés
-    })
+    // Cargar todas las ciudades
+    .addCase(city_render.fulfilled, (store, action) => ({
+      ...store,
+      allCity: Array.isArray(action.payload) ? action.payload : [],
+      filterCity: Array.isArray(action.payload) ? action.payload : [],
+      loading: false,
+    }))
 
-    // ----- GET CITY -----
-    .addCase(get_city.pending, (state) => {
-      state.loadingCity = true;
-    })
-    .addCase(get_city.fulfilled, (state, action) => {
-      state.city = action.payload;
-      state.loadingCity = false;
-    })
-    .addCase(get_city.rejected, (state) => {
-      state.city = null;
-      state.loadingCity = false;
-    })
+    // Cargar ciudad específica
+    .addCase(get_city.fulfilled, (store, action) => ({
+      ...store,
+      city: action.payload || null,
+    }))
 
-    // ----- GET TINERARIES -----
-    .addCase(get_tineraries.pending, (state) => {
-      state.loadingTineraries = true;
-    })
-    .addCase(get_tineraries.fulfilled, (state, action) => {
-      state.tineraries = action.payload;
-      state.loadingTineraries = false;
-    })
-    .addCase(get_tineraries.rejected, (state) => {
-      state.tineraries = [];
-      state.loadingTineraries = false;
-    })
+    // Cargar todos los tinerarios
+    .addCase(get_tineraries.fulfilled, (store, action) => ({
+      ...store,
+      tineraries: Array.isArray(action.payload) ? action.payload : [],
+      loading: false,
+    }))
 
-    // ----- RESET CITY -----
-    .addCase(resetCity, (state) => {
-      state.city = null;
-    })
+    // Resetear ciudad seleccionada
+    .addCase(resetCity, (store, action) => ({
+      ...store,
+      city: action.payload || null,
+    }))
 
-    // ----- RESET SEARCH -----
-    .addCase(resetSearch, (state) => {
-      state.input = "";
-    })
+    // Resetear búsqueda
+    .addCase(resetSearch, (store) => ({
+      ...store,
+      input: "",
+    }))
 
-    // ----- CITY INPUT -----
-    .addCase(city_input, (state, action) => {
-      state.selectedValue = action.payload.selectedValue;
-      state.input = action.payload.input;
-    })
+    // Input de búsqueda
+    .addCase(city_input, (store, action) => ({
+      ...store,
+      selectedValue: action.payload.selectedValue,
+      input: action.payload.input,
+    }))
 );
 
 export default cityReducer;
