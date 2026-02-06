@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const citiesQueries = axios.create( {
-  baseURL: 'https://mytinerary-back-martinmora-production.up.railway.app/api/cities',
+  baseURL: 'http://localhost:3000/api/cities',
 } );
 
 const tineraryQueries= axios.create({
-  baseURL: 'https://mytinerary-back-martinmora-production.up.railway.app/api/tineraries'
+  baseURL: 'http://localhost:3000/api/tineraries'
 });
 
 

@@ -14,57 +14,61 @@ const initialState = {
   tineraries: [],
   city: null,
   tinerary: null,
-  loading: true,
+  loadingCity: true,        // loading para la ciudad
+  loadingTineraries: true,  // loading para itinerarios
   selectedValue: "",
   input: "",
 };
 
 const cityReducer = createReducer(initialState, (builder) =>
   builder
-    .addCase(city_render.fulfilled, (store, action) => {
-      return {
-        ...store,
-        allCity: action.payload,
-        filterCity: action.payload, 
-        loading: false,
-      };
+    // ----- CARGAR TODAS LAS CIUDADES -----
+    .addCase(city_render.fulfilled, (state, action) => {
+      state.allCity = action.payload;
+      state.filterCity = action.payload;
+      // Podemos usar un loading general para esto si querés
     })
 
-    .addCase(get_city.fulfilled, (store, action) => {
-      return {
-        ...store,
-        city: action.payload,
-      };
+    // ----- GET CITY -----
+    .addCase(get_city.pending, (state) => {
+      state.loadingCity = true;
+    })
+    .addCase(get_city.fulfilled, (state, action) => {
+      state.city = action.payload;
+      state.loadingCity = false;
+    })
+    .addCase(get_city.rejected, (state) => {
+      state.city = null;
+      state.loadingCity = false;
     })
 
-    .addCase(get_tineraries.fulfilled, (store, action) => {
-      return {
-        ...store,
-        tineraries: action.payload,
-        loading: false,
-      };
+    // ----- GET TINERARIES -----
+    .addCase(get_tineraries.pending, (state) => {
+      state.loadingTineraries = true;
+    })
+    .addCase(get_tineraries.fulfilled, (state, action) => {
+      state.tineraries = action.payload;
+      state.loadingTineraries = false;
+    })
+    .addCase(get_tineraries.rejected, (state) => {
+      state.tineraries = [];
+      state.loadingTineraries = false;
     })
 
-    .addCase(resetCity, (stateActual, action) => {
-      return {
-        ...stateActual,
-        city: action.payload,
-      };
+    // ----- RESET CITY -----
+    .addCase(resetCity, (state) => {
+      state.city = null;
     })
 
-    .addCase(resetSearch, (stateActual) => {
-      return {
-        ...stateActual,
-        input: "",
-      };
+    // ----- RESET SEARCH -----
+    .addCase(resetSearch, (state) => {
+      state.input = "";
     })
 
-    .addCase(city_input, (store, action) => {
-      return {
-        ...store,
-        selectedValue: action.payload.selectedValue,
-        input: action.payload.input,
-      };
+    // ----- CITY INPUT -----
+    .addCase(city_input, (state, action) => {
+      state.selectedValue = action.payload.selectedValue;
+      state.input = action.payload.input;
     })
 );
 
